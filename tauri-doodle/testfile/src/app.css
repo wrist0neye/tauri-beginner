@@ -1,0 +1,65 @@
+:root {
+    --main-font : "Nanumsquare neo";
+}
+
+h1 {
+    font-family: var(--main-font);
+    font-weight: 900;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.guideline{
+    margin : 10px 10px;
+    padding : 2px 2px;
+    border-radius: 5px;
+    border : 1px dashed white;
+}
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: 0.75s;
+}
+
+.logo.tauri:hover {
+    filter: drop-shadow(0 0 2em #24c8db);
+}
+
+.logo.vite:hover {
+    filter: drop-shadow(0 0 2em #747bff);
+}
+
+  .logo.svelte-kit:hover {
+    filter: drop-shadow(0 0 2em #ff3e00);
+}
+
+button{
+    margin:0px 4px;
+}
+
+input {
+    min-width: 200px;
+}
