@@ -1,7 +1,7 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-use tauri::{CustomMenuItem, Menu, MenuItem, Submenu, Manager, Window};
+use tauri::{CustomMenuItem, Menu, MenuItem, Submenu, Manager, Window, SystemTrayMenu, SystemTrayMenuItem};
 
 
 #[tauri::command]
@@ -21,14 +21,24 @@ fn main() {
     // here `"quit".to_string()` defines the menu item id, and the second parameter is the menu item label.
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let close = CustomMenuItem::new("close".to_string(), "Close");
-    let submenu = Submenu::new("File", Menu::new().add_item(quit).add_item(close));
+    let submenu = Submenu::new("File", Menu::new().add_item(quit.clone()).add_item(close));
     let menu = Menu::new()
     .add_native_item(MenuItem::Copy)
     .add_item(CustomMenuItem::new("hide", "Hide"))
     .add_submenu(submenu);
 
+    let tray_menu = SystemTrayMenu::new()
+        .add_item(quit)
+        .add_native_item(SystemTrayMenuItem::Separator)
+        .add_item(CustomMenuItem::new("hide", "Hide"));
+
+    let system_tray = tauri::SystemTray::new()
+        .with_menu(tray_menu);
+
     let app = tauri::Builder::default()
         .menu(menu)
+        .system_tray(system_tray)
+        // .on_system_tray_event(|app, event| match event)
         .on_menu_event(|event|{
             match event.menu_item_id() {
                 "quit" => {
@@ -65,6 +75,7 @@ fn main() {
         .invoke_handler(tauri::generate_handler![greet, close_splashscreen])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
+    
 
     // let docs_window = tauri::WindowBuilder::new(
     //     &app,
