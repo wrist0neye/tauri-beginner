@@ -16,7 +16,8 @@
     "@picocss/pico": "^2.0.6",
     "@tauri-apps/api": "^1",
     "ag-grid-community": "^32.0.2",
-    "handsontable": "^14.4.0"
+    "handsontable": "^14.4.0",
+    "pdf-parse": "^1.1.1"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.1",

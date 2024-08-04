@@ -1,6 +1,9 @@
 :root {
     --main-font : "Nanumsquare neo";
 }
+--webkit-scrollbar {
+    display: none;
+}
 
 h1 {
     font-family: var(--main-font);
@@ -8,25 +11,67 @@ h1 {
     text-align: center;
 }
 
-.container{
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+body {
+    width : 100%;
+    height: 100%;
+    margin : 0px;
+    overflow: hidden;
+}
+
+button{
+    margin:0px 4px;
+    font-family: var(--main-font);
+}
+
+input {
+    min-width: 200px;
+    font-family: var(--main-font);
+}
+
+header {
+    width: 100%;
+}
+
+section{
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #1b1b1b;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 100vw;
 }
+
 
 .row{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
 .column {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -56,10 +101,57 @@ h1 {
     filter: drop-shadow(0 0 2em #ff3e00);
 }
 
-button{
-    margin:0px 4px;
+.titlebar {
+    height: 30px;
+    background: hsl(334,78%,45%);
+    user-select: none;
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 8px 8px 0 0;
+}
+.titlebar-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 30px;
+}
+.titlebar-button:hover {
+    background-color: hsl(334,78%,30%);
+}
+.titlebar-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    margin : 3px 3px;
+    padding : 2px 2px;
+    border-radius: 3px;
+}
+.titlebar-icon:hover{
+    background-color: hsl(334,78%,30%);
+}
+#go-github {
+    background-image: url("/github-mark.png");
+    background-size:contain;
+    width:100%;
+    height:100%;
+}
+#go-tauri {
+    background-image: url("/tauri.svg");
+    background-size:contain;
+    width:100%;
+    height:100%;
 }
 
-input {
-    min-width: 200px;
+#drag_region {
+    margin : 5px 0 0 0;
+    width: 100%;
+    height: 100%
 }
+
